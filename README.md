@@ -1,189 +1,243 @@
-A README should have a workflow that is **easy to understand**, **professional**, and **shows the complete lifecycle** of the application.
+# 🚛 TransitOps — System Workflow
 
-You can directly paste the following into your `README.md`.
+The TransitOps platform digitizes the complete fleet operations lifecycle—from vehicle registration to trip execution, maintenance, and business analytics.
 
-````markdown
-# 🚛 TransitOps Workflow
+---
+
+# 🏗️ High-Level Workflow
 
 ```text
-                        +----------------+
-                        |     Login      |
-                        | (RBAC Enabled) |
-                        +-------+--------+
-                                |
-        +-----------------------+----------------------+
-        |                      |                       |
-        ▼                      ▼                       ▼
- Fleet Manager          Safety Officer        Financial Analyst
-        |
+                               ┌────────────────────────┐
+                               │        Login           │
+                               │  Authentication (RBAC) │
+                               └───────────┬────────────┘
+                                           │
+                 ┌─────────────────────────┼─────────────────────────┐
+                 │                         │                         │
+                 ▼                         ▼                         ▼
+         Fleet Manager             Safety Officer          Financial Analyst
+                 │
+                 ▼
+      ┌──────────────────────────────┐
+      │          Dashboard           │
+      │──────────────────────────────│
+      │ • Active Vehicles            │
+      │ • Active Trips               │
+      │ • Fleet Utilization          │
+      │ • Maintenance Alerts         │
+      │ • Revenue & Expenses         │
+      └──────────────┬───────────────┘
+                     │
+                     ▼
+         Fleet Operations Management
+                     │
+     ┌───────────────┴────────────────┐
+     │                                │
+     ▼                                ▼
+Vehicle Management             Driver Management
+     │                                │
+     ▼                                ▼
+Register / Update              Register / Update
+Status Tracking                License Verification
+Availability                   Availability
+Maintenance                    Driver Assignment
+     │                                │
+     └───────────────┬────────────────┘
+                     ▼
+              Trip Management
+                     │
+                     ▼
+      Source → Destination Selection
+      Vehicle Assignment
+      Driver Assignment
+      Cargo Allocation
+                     │
+                     ▼
+          Business Rule Validation
+                     │
+        ┌────────────┴────────────┐
+        │                         │
+        ▼                         ▼
+ Validation Successful      Validation Failed
+        │                         │
+        ▼                         ▼
+ Dispatch Trip           Return Validation Errors
+        │
         ▼
-+----------------------+
-| Dashboard            |
-| - Active Vehicles    |
-| - Active Trips       |
-| - Maintenance        |
-| - Fleet Utilization  |
-+----------+-----------+
-           |
-           ▼
-+-----------------------------+
-| Vehicle Management          |
-| Register / Update / Delete  |
-| Vehicle Status              |
-| - Available                 |
-| - On Trip                   |
-| - In Shop                   |
-| - Retired                   |
-+-------------+---------------+
-              |
-              ▼
-+-----------------------------+
-| Driver Management           |
-| Register Driver             |
-| Validate License            |
-| Driver Status               |
-| - Available                 |
-| - On Trip                   |
-| - Off Duty                  |
-| - Suspended                 |
-+-------------+---------------+
-              |
-              ▼
-+----------------------------------------------+
-| Trip Creation                                |
-| Source → Destination                         |
-| Select Vehicle                               |
-| Select Driver                                |
-| Enter Cargo Weight                           |
-+------------------+---------------------------+
-                   |
-                   ▼
-        Business Rule Validation
-                   |
-    +--------------+--------------+
-    |                             |
-    ▼                             ▼
-Validation Passed          Validation Failed
-    |                             |
-    ▼                             ▼
-Dispatch Trip           Show Validation Error
-    |
-    ▼
-Vehicle Status → On Trip
-Driver Status  → On Trip
-    |
-    ▼
-Trip Monitoring
-    |
-    ▼
+ Vehicle Status → On Trip
+ Driver Status  → On Trip
+        │
+        ▼
+     Live Trip Monitoring
+        │
+        ▼
+     Trip Completion
+        │
+        ▼
+ Update Operational Metrics
+ • Final Odometer
+ • Fuel Consumption
+ • Revenue Generated
+ • Trip Expenses
+        │
+        ▼
+ Vehicle Status → Available
+ Driver Status  → Available
+        │
+        ▼
+ Expense & Fuel Management
+        │
+        ▼
+ Maintenance Management
+        │
+        ▼
+ Business Analytics & Reporting
+```
+
+---
+
+# 📌 Business Process
+
+```text
+Login
+   │
+   ▼
+Dashboard
+   │
+   ▼
+Vehicle Registration
+   │
+   ▼
+Driver Registration
+   │
+   ▼
+Driver License Verification
+   │
+   ▼
+Create Trip
+   │
+   ▼
+Validate Business Rules
+   │
+   ├──────────────► Validation Failed
+   │                     │
+   │                     ▼
+   │              Display Error
+   │
+   ▼
+Dispatch Trip
+   │
+   ▼
+Vehicle & Driver Assigned
+   │
+   ▼
+Trip Execution
+   │
+   ▼
+Fuel & Expense Logging
+   │
+   ▼
 Complete Trip
-    |
-    ▼
-Update:
-• Final Odometer
-• Fuel Consumed
-• Revenue
-    |
-    ▼
-Vehicle → Available
-Driver → Available
-    |
-    ▼
-+------------------------------+
-| Fuel & Expense Management    |
-| Fuel Logs                    |
-| Toll Charges                 |
-| Maintenance Cost             |
-+--------------+---------------+
-               |
-               ▼
-+------------------------------+
-| Maintenance Workflow         |
-| Raise Maintenance Request    |
-| Vehicle → In Shop            |
-| Repair Completed             |
-| Vehicle → Available          |
-+--------------+---------------+
-               |
-               ▼
-+------------------------------+
-| Analytics & Reports          |
-| Fleet Utilization            |
-| Fuel Efficiency              |
-| Operational Cost             |
-| Vehicle ROI                  |
-| CSV / PDF Export             |
-+------------------------------+
-```
-````
-
----
-
-## Simplified Business Flow
-
-```markdown
-# Business Workflow
-
-1. User logs into the system.
-2. Fleet Manager registers vehicles.
-3. Fleet Manager registers drivers.
-4. System validates driver's license.
-5. User creates a new trip.
-6. System validates:
-   - Vehicle availability
-   - Driver availability
-   - License validity
-   - Cargo capacity
-7. Trip is dispatched.
-8. Vehicle and Driver status automatically change to **On Trip**.
-9. During the trip, fuel and expenses are recorded.
-10. Trip is completed.
-11. Vehicle and Driver status automatically revert to **Available**.
-12. If maintenance is required:
-    - Vehicle is moved to **In Shop**
-    - Maintenance logs are created
-    - Vehicle becomes available after maintenance completion.
-13. Dashboard and reports are automatically updated with KPIs and analytics.
+   │
+   ▼
+Update Vehicle & Driver Availability
+   │
+   ▼
+Maintenance (If Required)
+   │
+   ▼
+Analytics & Reports
 ```
 
 ---
 
-## Status Transition Diagram
+# 🚚 Vehicle Lifecycle
 
-```markdown
-# Vehicle Lifecycle
+```text
+                +-------------+
+                | Available   |
+                +------+------+
+                       │
+                       ▼
+               +---------------+
+               | Assigned      |
+               +-------+-------+
+                       │
+                       ▼
+                +--------------+
+                | On Trip      |
+                +------+-------+
+                       │
+        ┌──────────────┴──────────────┐
+        │                             │
+        ▼                             ▼
++------------------+          +------------------+
+| Trip Completed   |          | Maintenance Req. |
++--------+---------+          +---------+--------+
+         │                              │
+         ▼                              ▼
+ +---------------+             +----------------+
+ | Available     |◄────────────| In Workshop    |
+ +-------+-------+             +--------+-------+
+         │                              │
+         └──────────────┬───────────────┘
+                        ▼
+                 Maintenance Complete
+                        │
+                        ▼
+                  Available
+                        │
+                        ▼
+                    Retired
+```
 
+---
+
+# 👨‍✈️ Driver Lifecycle
+
+```text
+Registered
+     │
+     ▼
+License Verified
+     │
+     ▼
 Available
-    │
-    ▼
-Assigned to Trip
-    │
-    ▼
+     │
+     ▼
+Assigned
+     │
+     ▼
 On Trip
-    │
-    ├──────────────► Maintenance Required
-    │                     │
-    ▼                     ▼
-Trip Completed       In Shop
-    │                     │
-    ▼                     ▼
-Available ◄──────── Maintenance Completed
-    │
-    ▼
-Retired
+     │
+     ▼
+Available
+     │
+     ├────────► Suspended
+     │
+     ▼
+Off Duty
 ```
 
 ---
 
-## Trip Lifecycle
+# 🛣️ Trip Lifecycle
 
-```markdown
+```text
 Draft
+   │
+   ▼
+Validation
+   │
+   ├──────────────► Rejected
    │
    ▼
 Dispatched
    │
-   ├────────► Cancelled
+   ▼
+In Progress
+   │
+   ├──────────────► Cancelled
    │
    ▼
 Completed
@@ -191,3 +245,107 @@ Completed
 
 ---
 
+# ✅ Business Rules
+
+Before dispatching a trip, the system validates the following:
+
+- Vehicle is available.
+- Driver is available.
+- Driver license is valid.
+- Cargo weight does not exceed vehicle capacity.
+- Vehicle is not under maintenance.
+- Vehicle documents are valid.
+- Driver has no conflicting assignments.
+- Required trip information is complete.
+
+Only after all validations pass can a trip be dispatched.
+
+---
+
+# 📊 Operational Modules
+
+## Fleet Management
+
+- Vehicle Registration
+- Vehicle Status Tracking
+- Vehicle Retirement
+- Fleet Availability
+
+## Driver Management
+
+- Driver Registration
+- License Verification
+- Driver Assignment
+- Driver Availability
+
+## Trip Management
+
+- Trip Creation
+- Vehicle Assignment
+- Driver Assignment
+- Trip Monitoring
+- Trip Completion
+
+## Fuel & Expense Management
+
+- Fuel Logs
+- Toll Expenses
+- Maintenance Expenses
+- Operational Costs
+
+## Maintenance Management
+
+- Raise Maintenance Requests
+- Repair Tracking
+- Service History
+- Vehicle Availability Updates
+
+## Analytics & Reporting
+
+- Fleet Utilization
+- Fuel Efficiency
+- Operational Costs
+- Revenue Analysis
+- Vehicle ROI
+- Export Reports (CSV / PDF)
+
+---
+
+# 🔄 End-to-End Workflow
+
+```text
+Authenticate User
+        │
+        ▼
+Access Dashboard
+        │
+        ▼
+Manage Fleet & Drivers
+        │
+        ▼
+Create Trip
+        │
+        ▼
+Business Validation
+        │
+        ▼
+Dispatch Trip
+        │
+        ▼
+Monitor Trip
+        │
+        ▼
+Log Fuel & Expenses
+        │
+        ▼
+Complete Trip
+        │
+        ▼
+Update Fleet Status
+        │
+        ▼
+Maintenance (If Needed)
+        │
+        ▼
+Generate Reports & Analytics
+```
