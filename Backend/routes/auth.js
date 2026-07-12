@@ -8,7 +8,7 @@ const router = express.Router();
 // Generate Token helper
 const generateToken = (user) => {
   return jwt.sign(
-    { id: user.id, email: user.email, role: user.role },
+    { id: user.id, email: user.email, phone: user.phone, role: user.role },
     process.env.JWT_SECRET || 'transitops_super_secret_jwt_key_12345',
     { expiresIn: '30d' }
   );
@@ -19,15 +19,24 @@ const generateToken = (user) => {
 // @access  Public
 router.post('/register', async (req, res) => {
   try {
-    const { email, password, role } = req.body;
+    const { email, phone, password, role } = req.body;
 
-    const userExists = await User.findOne({ email });
+    if (!email && !phone) {
+      return res.status(400).json({ message: 'Email or phone is required' });
+    }
+
+    const query = [];
+    if (email) query.push({ email });
+    if (phone) query.push({ phone });
+
+    const userExists = await User.findOne({ $or: query });
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
     const user = await User.create({
-      email,
+      email: email || undefined,
+      phone: phone || undefined,
       password,
       role,
     });
@@ -38,6 +47,7 @@ router.post('/register', async (req, res) => {
         user: {
           id: user.id,
           email: user.email,
+          phone: user.phone,
           role: user.role,
         },
       });
@@ -54,9 +64,15 @@ router.post('/register', async (req, res) => {
 // @access  Public
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { identifier, password } = req.body;
 
-    const user = await User.findOne({ email });
+    if (!identifier) {
+      return res.status(400).json({ message: 'Email or phone is required' });
+    }
+
+    const user = await User.findOne({
+      $or: [{ email: identifier }, { phone: identifier }]
+    });
 
     if (user && (await user.matchPassword(password))) {
       res.json({
@@ -64,6 +80,7 @@ router.post('/login', async (req, res) => {
         user: {
           id: user.id,
           email: user.email,
+          phone: user.phone,
           role: user.role,
         },
       });
