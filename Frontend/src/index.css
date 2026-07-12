@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --color-status-available: #22c55e;
+  --color-status-ontrip: #3b82f6;
+  --color-status-inshop: #f97316;
+  --color-status-retired: #6b7280;
+  --color-status-suspended: #ef4444;
+  --color-status-offduty: #a855f7;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
