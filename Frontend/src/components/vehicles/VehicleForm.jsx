@@ -42,7 +42,7 @@ function VehicleForm({ defaultValues, onSubmit, onCancel, loading }) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
             Registration Number
           </label>
           <input
@@ -57,7 +57,7 @@ function VehicleForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
             Vehicle Name / Model
           </label>
           <input
@@ -71,11 +71,11 @@ function VehicleForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Type</label>
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Type</label>
           <select {...register("type")} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">Select type</option>
+            <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">Select type</option>
             {VEHICLE_TYPES.map((t) => (
-              <option key={t} value={t}>
+              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={t} value={t}>
                 {t}
               </option>
             ))}
@@ -84,10 +84,10 @@ function VehicleForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Status</label>
           <select {...register("status")} className="w-full border rounded-lg px-3 py-2 text-sm">
             {Object.values(VEHICLE_STATUS).map((s) => (
-              <option key={s} value={s}>
+              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={s} value={s}>
                 {s}
               </option>
             ))}
@@ -95,7 +95,7 @@ function VehicleForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
             Max Load Capacity (kg)
           </label>
           <input
@@ -110,7 +110,7 @@ function VehicleForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Odometer (km)</label>
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Odometer (km)</label>
           <input
             type="number"
             {...register("odometer")}
@@ -122,7 +122,7 @@ function VehicleForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div className="col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
             Acquisition Cost (₹)
           </label>
           <input
@@ -141,14 +141,14 @@ function VehicleForm({ defaultValues, onSubmit, onCancel, loading }) {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 text-sm rounded-lg border text-gray-600 hover:bg-gray-50"
+          className="px-4 py-2 text-sm rounded-lg border text-[#9CA3AF] hover:bg-[#0F172A]"
         >
           Cancel
         </button>
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
+          className="px-4 py-2 text-sm rounded-lg bg-[#00C2FF] text-black hover:shadow-cyan-500/50 hover:shadow-lg transition-all duration-300 hover:bg-[#00A8E0] disabled:opacity-50"
         >
           {loading ? "Saving..." : defaultValues ? "Update Vehicle" : "Add Vehicle"}
         </button>

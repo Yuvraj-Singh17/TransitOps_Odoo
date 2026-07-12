@@ -5,17 +5,17 @@ import StatusBadge from "../common/StatusBadge";
 function VehicleTable({ vehicles = [], onEdit, onDelete }) {
   if (vehicles.length === 0) {
     return (
-      <div className="text-center py-10 text-gray-400 text-sm">
+      <div className="text-center py-10 text-[#9CA3AF] text-sm">
         No vehicles found. Add one to get started.
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto bg-white rounded-xl border shadow-sm">
+    <div className="overflow-x-auto bg-[#121821] rounded-xl border shadow-sm">
       <table className="min-w-full text-sm">
-        <thead className="bg-gray-50 border-b">
-          <tr className="text-left text-gray-600">
+        <thead className="bg-[#0F172A] border-b border-[#1F2937]">
+          <tr className="text-left text-[#9CA3AF]">
             <th className="px-4 py-3 font-medium">Reg. Number</th>
             <th className="px-4 py-3 font-medium">Name / Model</th>
             <th className="px-4 py-3 font-medium">Type</th>
@@ -27,8 +27,8 @@ function VehicleTable({ vehicles = [], onEdit, onDelete }) {
         </thead>
         <tbody>
           {vehicles.map((v) => (
-            <tr key={v.id} className="border-b last:border-0 hover:bg-gray-50">
-              <td className="px-4 py-3 font-medium text-gray-800">{v.regNumber}</td>
+            <tr key={v.id} className="border-b border-[#1F2937] last:border-0 hover:bg-[#0F172A]">
+              <td className="px-4 py-3 font-medium text-[#E5E7EB]">{v.regNumber}</td>
               <td className="px-4 py-3">{v.name}</td>
               <td className="px-4 py-3">{v.type}</td>
               <td className="px-4 py-3">{v.maxLoadCapacity} kg</td>
@@ -40,13 +40,13 @@ function VehicleTable({ vehicles = [], onEdit, onDelete }) {
                 <div className="flex justify-end gap-2">
                   <button
                     onClick={() => onEdit(v)}
-                    className="p-1.5 rounded-lg hover:bg-blue-50 text-blue-600"
+                    className="p-1.5 rounded-lg hover:bg-[#00C2FF]/10 text-[#00C2FF] transition-colors"
                   >
                     <Pencil size={16} />
                   </button>
                   <button
                     onClick={() => onDelete(v.id)}
-                    className="p-1.5 rounded-lg hover:bg-red-50 text-red-600"
+                    className="p-1.5 rounded-lg hover:bg-red-500/10 text-red-400 transition-colors"
                   >
                     <Trash2 size={16} />
                   </button>

@@ -1,15 +1,102 @@
 @import "tailwindcss";
 
 @theme {
+  /* Status Colors */
   --color-status-available: #22c55e;
   --color-status-ontrip: #3b82f6;
   --color-status-inshop: #f97316;
   --color-status-retired: #6b7280;
-  --color-status-suspended: #ef4444;
-  --color-status-offduty: #a855f7;
+  /* Dark M-Style Theme Palette */
+  --color-brand-50: #e0f8ff;
+  --color-brand-100: #b3ecff;
+  --color-brand-200: #80dfff;
+  --color-brand-300: #4dd2ff;
+  --color-brand-400: #26c9ff;
+  --color-brand-500: #00c2ff; /* Electric Blue Accent */
+  --color-brand-600: #00a8e0;
+  --color-brand-700: #0085b3;
+  --color-brand-800: #006185;
+  --color-brand-900: #00425c;
+
+  --color-bg-base: #0b0f14;
+  --color-bg-card: #121821;
+  --color-text-primary: #e5e7eb;
+  --color-text-secondary: #9ca3af;
+  --color-border-dark: #1f2937;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Outfit', system-ui, sans-serif;
+
+  /* Custom Animations */
+  --animate-fade-in: fade-in 0.4s ease-out;
+  --animate-fade-in-up: fade-in-up 0.5s ease-out;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-neon-pulse: neon-pulse 2s infinite;
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes neon-pulse {
+    0% { box-shadow: 0 0 5px rgba(0, 194, 255, 0.2); }
+    50% { box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); }
+    100% { box-shadow: 0 0 5px rgba(0, 194, 255, 0.2); }
+  }
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Glassmorphism Utilities - Dark M-Style */
+.glass-panel {
+  background: rgba(18, 24, 33, 0.4); /* High transparency */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle inner border */
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.6); /* Wide dark shadow */
+}
+
+.glass-card {
+  background: rgba(18, 24, 33, 0.5); /* High transparency */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  background: rgba(18, 24, 33, 0.7);
+  border-color: rgba(0, 194, 255, 0.4);
+  /* Massive glowing neon spread */
+  box-shadow: 0 0 35px rgba(0, 194, 255, 0.25), 0 0 15px rgba(0, 194, 255, 0.15);
+}
+
+/* Custom Scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

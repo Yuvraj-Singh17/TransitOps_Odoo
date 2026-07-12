@@ -27,7 +27,7 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
         <button
           onClick={() => onDispatch(trip.id)}
           disabled={loading}
-          className="flex items-center gap-1.5 bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-blue-700 disabled:opacity-50"
+          className="flex items-center gap-1.5 bg-[#00C2FF] text-black hover:shadow-cyan-500/50 hover:shadow-lg transition-all duration-300 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-[#00A8E0] disabled:opacity-50"
         >
           <Rocket size={14} /> Dispatch
         </button>
@@ -65,10 +65,10 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
         ) : (
           <form
             onSubmit={handleCompleteSubmit}
-            className="flex flex-wrap items-end gap-2 bg-gray-50 p-3 rounded-lg border"
+            className="flex flex-wrap items-end gap-2 bg-[#0F172A] p-3 rounded-lg border"
           >
             <div>
-              <label className="text-xs text-gray-500 block mb-1">Final Odometer</label>
+              <label className="text-xs text-[#9CA3AF] block mb-1">Final Odometer</label>
               <input
                 type="number"
                 value={finalOdometer}
@@ -78,7 +78,7 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
               />
             </div>
             <div>
-              <label className="text-xs text-gray-500 block mb-1">Fuel Consumed (L)</label>
+              <label className="text-xs text-[#9CA3AF] block mb-1">Fuel Consumed (L)</label>
               <input
                 type="number"
                 value={fuelConsumed}
@@ -88,7 +88,7 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
               />
             </div>
             <div>
-              <label className="text-xs text-gray-500 block mb-1">Revenue (₹)</label>
+              <label className="text-xs text-[#9CA3AF] block mb-1">Revenue (₹)</label>
               <input
                 type="number"
                 value={revenue}
@@ -105,7 +105,7 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
             <button
               type="button"
               onClick={() => setShowCompleteForm(false)}
-              className="text-gray-500 text-xs px-2"
+              className="text-[#9CA3AF] text-xs px-2"
             >
               Cancel
             </button>

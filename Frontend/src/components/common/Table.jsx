@@ -28,9 +28,9 @@ function Table({ columns, data = [], searchPlaceholder = "Search..." }) {
   });
 
   return (
-    <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+    <div className="bg-[#121821] rounded-xl border shadow-sm overflow-hidden">
       {/* Search bar */}
-      <div className="p-3 border-b">
+      <div className="p-3 border-b border-[#1F2937]">
         <div className="relative max-w-xs">
           <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
           <input
@@ -45,9 +45,9 @@ function Table({ columns, data = [], searchPlaceholder = "Search..." }) {
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="min-w-full text-sm">
-          <thead className="bg-gray-50 border-b">
+          <thead className="bg-[#0F172A] border-b border-[#1F2937]">
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id} className="text-left text-gray-600">
+              <tr key={headerGroup.id} className="text-left text-[#9CA3AF]">
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
@@ -73,7 +73,7 @@ function Table({ columns, data = [], searchPlaceholder = "Search..." }) {
               </tr>
             ) : (
               table.getRowModel().rows.map((row) => (
-                <tr key={row.id} className="border-b last:border-0 hover:bg-gray-50">
+                <tr key={row.id} className="border-b border-[#1F2937] last:border-0 hover:bg-[#0F172A]">
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className="px-4 py-3">
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -87,7 +87,7 @@ function Table({ columns, data = [], searchPlaceholder = "Search..." }) {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between px-4 py-3 border-t text-xs text-gray-500">
+      <div className="flex items-center justify-between px-4 py-3 border-t text-xs text-[#9CA3AF]">
         <span>
           Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount() || 1}
         </span>
@@ -95,14 +95,14 @@ function Table({ columns, data = [], searchPlaceholder = "Search..." }) {
           <button
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className="p-1.5 rounded-lg border hover:bg-gray-50 disabled:opacity-40"
+            className="p-1.5 rounded-lg border hover:bg-[#0F172A] disabled:opacity-40"
           >
             <ChevronLeft size={14} />
           </button>
           <button
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="p-1.5 rounded-lg border hover:bg-gray-50 disabled:opacity-40"
+            className="p-1.5 rounded-lg border hover:bg-[#0F172A] disabled:opacity-40"
           >
             <ChevronRight size={14} />
           </button>

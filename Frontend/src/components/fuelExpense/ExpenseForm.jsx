@@ -31,13 +31,13 @@ function ExpenseForm({ onSubmit, onCancel, loading }) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
             Vehicle {vehiclesLoading && "(loading...)"}
           </label>
           <select {...register("vehicleId")} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">Select vehicle</option>
+            <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">Select vehicle</option>
             {vehicles.map((v) => (
-              <option key={v.id} value={v.id}>
+              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={v.id} value={v.id}>
                 {v.regNumber} — {v.name}
               </option>
             ))}
@@ -48,11 +48,11 @@ function ExpenseForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Expense Type</label>
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Expense Type</label>
           <select {...register("type")} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option value="">Select type</option>
+            <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">Select type</option>
             {EXPENSE_TYPES.map((t) => (
-              <option key={t} value={t}>
+              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={t} value={t}>
                 {t}
               </option>
             ))}
@@ -61,7 +61,7 @@ function ExpenseForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Amount (₹)</label>
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Amount (₹)</label>
           <input
             type="number"
             {...register("amount")}
@@ -72,7 +72,7 @@ function ExpenseForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div className="col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Date</label>
           <input
             type="date"
             {...register("date")}
@@ -82,7 +82,7 @@ function ExpenseForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div className="col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
             Notes (optional)
           </label>
           <textarea
@@ -98,14 +98,14 @@ function ExpenseForm({ onSubmit, onCancel, loading }) {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 text-sm rounded-lg border text-gray-600 hover:bg-gray-50"
+          className="px-4 py-2 text-sm rounded-lg border text-[#9CA3AF] hover:bg-[#0F172A]"
         >
           Cancel
         </button>
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50"
+          className="px-4 py-2 text-sm rounded-lg bg-[#00C2FF] text-black hover:shadow-cyan-500/50 hover:shadow-lg transition-all duration-300 hover:bg-[#00A8E0] disabled:opacity-50"
         >
           {loading ? "Saving..." : "Add Expense"}
         </button>

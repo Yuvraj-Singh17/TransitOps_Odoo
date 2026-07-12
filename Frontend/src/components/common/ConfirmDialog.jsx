@@ -14,17 +14,17 @@ function ConfirmDialog({
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-[60] p-4">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-sm p-6 text-center">
+      <div className="bg-[#121821] rounded-xl shadow-lg w-full max-w-sm p-6 text-center">
         <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-3">
           <AlertTriangle className="text-red-500" size={22} />
         </div>
-        <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-        {message && <p className="text-sm text-gray-500 mt-1">{message}</p>}
+        <h3 className="text-lg font-semibold text-[#E5E7EB]">{title}</h3>
+        {message && <p className="text-sm text-[#9CA3AF] mt-1">{message}</p>}
 
         <div className="flex justify-center gap-3 mt-5">
           <button
             onClick={onCancel}
-            className="px-4 py-2 text-sm rounded-lg border text-gray-600 hover:bg-gray-50"
+            className="px-4 py-2 text-sm rounded-lg border text-[#9CA3AF] hover:bg-[#0F172A]"
           >
             Cancel
           </button>

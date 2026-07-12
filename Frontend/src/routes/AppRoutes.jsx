@@ -3,6 +3,7 @@ import ProtectedRoute from "../components/layout/ProtectedRoute";
 import DashboardLayout from "../components/layout/DashboardLayout";
 
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
 import Vehicles from "../pages/Vehicles";
 import Drivers from "../pages/Drivers";
@@ -17,6 +18,7 @@ function AppRoutes() {
     <Routes>
       {/* Public route */}
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       {/* Protected routes - wrapped in DashboardLayout (Navbar + Sidebar) */}
       <Route

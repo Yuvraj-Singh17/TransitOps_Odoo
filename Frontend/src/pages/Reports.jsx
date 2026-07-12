@@ -41,7 +41,7 @@ function Reports() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Reports & Analytics</h2>
+        <h2 className="text-2xl font-bold text-[#E5E7EB]">Reports & Analytics</h2>
         {activeTab === "efficiency" && (
           <ExportButtons data={efficiencyData} filename="fuel-efficiency-report" />
         )}
@@ -49,15 +49,15 @@ function Reports() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 bg-gray-100 p-1 rounded-lg w-fit">
+      <div className="flex gap-1 mb-6 bg-[#0B0F14] border border-[#1F2937] p-1.5 rounded-xl w-fit shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
+            className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
               activeTab === tab.id
-                ? "bg-white text-blue-600 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
+                ? "bg-[#00C2FF]/10 text-[#00C2FF] shadow-[0_0_15px_rgba(0,194,255,0.2)]"
+                : "text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-[#121821]/50"
             }`}
           >
             {tab.label}
@@ -65,7 +65,7 @@ function Reports() {
         ))}
       </div>
 
-      <div className="bg-white rounded-xl border shadow-sm p-5">
+      <div className="glass-card rounded-xl border border-[#1F2937] shadow-sm p-5">
         {activeTab === "efficiency" &&
           (effLoading ? <Loader /> : <FuelEfficiencyChart data={efficiencyData || []} />)}
 

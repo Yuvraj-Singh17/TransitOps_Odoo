@@ -12,10 +12,10 @@ function VehicleRoiTable({ data = [] }) {
   };
 
   return (
-    <div className="overflow-x-auto bg-white rounded-xl border shadow-sm">
+    <div className="overflow-x-auto bg-[#121821] rounded-xl border shadow-sm">
       <table className="min-w-full text-sm">
-        <thead className="bg-gray-50 border-b">
-          <tr className="text-left text-gray-600">
+        <thead className="bg-[#0F172A] border-b border-[#1F2937]">
+          <tr className="text-left text-[#9CA3AF]">
             <th className="px-4 py-3 font-medium">Vehicle</th>
             <th className="px-4 py-3 font-medium">Revenue</th>
             <th className="px-4 py-3 font-medium">Fuel Cost</th>
@@ -28,8 +28,8 @@ function VehicleRoiTable({ data = [] }) {
           {data.map((row, idx) => {
             const roi = calculateRoi(row);
             return (
-              <tr key={idx} className="border-b last:border-0 hover:bg-gray-50">
-                <td className="px-4 py-3 font-medium text-gray-800">{row.vehicleRegNumber}</td>
+              <tr key={idx} className="border-b border-[#1F2937] last:border-0 hover:bg-[#0F172A]">
+                <td className="px-4 py-3 font-medium text-[#E5E7EB]">{row.vehicleRegNumber}</td>
                 <td className="px-4 py-3">₹{row.revenue?.toLocaleString() || 0}</td>
                 <td className="px-4 py-3">₹{row.fuelCost?.toLocaleString() || 0}</td>
                 <td className="px-4 py-3">₹{row.maintenanceCost?.toLocaleString() || 0}</td>

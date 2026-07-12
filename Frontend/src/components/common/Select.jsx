@@ -5,22 +5,23 @@ function Select({ label, options = [], error, placeholder = "Select...", classNa
   return (
     <div>
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+        <label className="block text-sm font-medium text-[#E5E7EB] mb-1">{label}</label>
       )}
       <select
         className={clsx(
-          "w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500",
-          error ? "border-red-400" : "border-gray-300",
+          "w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#00C2FF] bg-[#121821] text-[#E5E7EB]",
+          error ? "border-red-400" : "border-[#1F2937]",
           className
         )}
+        style={{ colorScheme: 'dark' }}
         {...props}
       >
-        <option value="">{placeholder}</option>
+        <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">{placeholder}</option>
         {options.map((opt) => {
           const value = typeof opt === "object" ? opt.value : opt;
           const label = typeof opt === "object" ? opt.label : opt;
           return (
-            <option key={value} value={value}>
+            <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={value} value={value}>
               {label}
             </option>
           );
