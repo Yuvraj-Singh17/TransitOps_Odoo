@@ -13,10 +13,10 @@ function Modal({ isOpen, onClose, title, children, size = "md" }) {
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-      <div className={`bg-[#121821] rounded-xl shadow-lg w-full ${sizes[size]} p-6 max-h-[90vh] overflow-y-auto`}>
+      <div className={`bg-bg-card rounded-xl shadow-lg w-full ${sizes[size]} p-6 max-h-[90vh] overflow-y-auto`}>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-[#E5E7EB]">{title}</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-[#9CA3AF]">
+          <h3 className="text-lg font-semibold text-text-primary">{title}</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-text-secondary">
             <X size={20} />
           </button>
         </div>

@@ -23,19 +23,19 @@ function DashboardFilters({ onChange }) {
   const hasActiveFilters = filters.type || filters.status || filters.region;
 
   return (
-    <div className="flex flex-wrap items-center gap-3 mb-6 bg-[#121821] border rounded-xl p-3">
-      <div className="flex items-center gap-1.5 text-sm text-[#9CA3AF] font-medium">
+    <div className="flex flex-wrap items-center gap-3 mb-6 bg-bg-card border rounded-xl p-3">
+      <div className="flex items-center gap-1.5 text-sm text-text-secondary font-medium">
         <Filter size={15} /> Filters:
       </div>
 
       <select
         value={filters.type}
         onChange={(e) => handleChange("type", e.target.value)}
-        className="border rounded-lg px-3 py-1.5 text-sm text-[#E5E7EB]"
+        className="border rounded-lg px-3 py-1.5 text-sm text-text-primary"
       >
-        <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">All Types</option>
+        <option className="bg-bg-base text-text-primary"  value="">All Types</option>
         {VEHICLE_TYPES.map((t) => (
-          <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={t} value={t}>
+          <option className="bg-bg-base text-text-primary"  key={t} value={t}>
             {t}
           </option>
         ))}
@@ -44,11 +44,11 @@ function DashboardFilters({ onChange }) {
       <select
         value={filters.status}
         onChange={(e) => handleChange("status", e.target.value)}
-        className="border rounded-lg px-3 py-1.5 text-sm text-[#E5E7EB]"
+        className="border rounded-lg px-3 py-1.5 text-sm text-text-primary"
       >
-        <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">All Statuses</option>
+        <option className="bg-bg-base text-text-primary"  value="">All Statuses</option>
         {Object.values(VEHICLE_STATUS).map((s) => (
-          <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={s} value={s}>
+          <option className="bg-bg-base text-text-primary"  key={s} value={s}>
             {s}
           </option>
         ))}
@@ -57,11 +57,11 @@ function DashboardFilters({ onChange }) {
       <select
         value={filters.region}
         onChange={(e) => handleChange("region", e.target.value)}
-        className="border rounded-lg px-3 py-1.5 text-sm text-[#E5E7EB]"
+        className="border rounded-lg px-3 py-1.5 text-sm text-text-primary"
       >
-        <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">All Regions</option>
+        <option className="bg-bg-base text-text-primary"  value="">All Regions</option>
         {REGIONS.map((r) => (
-          <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={r} value={r}>
+          <option className="bg-bg-base text-text-primary"  key={r} value={r}>
             {r}
           </option>
         ))}

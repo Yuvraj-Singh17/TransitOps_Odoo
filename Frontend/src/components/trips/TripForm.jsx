@@ -87,7 +87,7 @@ function TripForm({ onSubmit, onCancel, loading }) {
     <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Source</label>
+          <label className="block text-sm font-medium text-text-primary mb-1">Source</label>
           <input
             {...register("source")}
             className="w-full border rounded-lg px-3 py-2 text-sm"
@@ -97,7 +97,7 @@ function TripForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Destination</label>
+          <label className="block text-sm font-medium text-text-primary mb-1">Destination</label>
           <input
             {...register("destination")}
             className="w-full border rounded-lg px-3 py-2 text-sm"
@@ -109,13 +109,13 @@ function TripForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             Vehicle {vehiclesLoading && "(loading...)"}
           </label>
           <select {...register("vehicleId")} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">Select available vehicle</option>
+            <option className="bg-bg-base text-text-primary"  value="">Select available vehicle</option>
             {vehicles.map((v) => (
-              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={v.id} value={v.id}>
+              <option className="bg-bg-base text-text-primary"  key={v.id} value={v.id}>
                 {v.regNumber} — {v.name} (max {v.maxLoadCapacity}kg)
               </option>
             ))}
@@ -129,13 +129,13 @@ function TripForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             Driver {driversLoading && "(loading...)"}
           </label>
           <select {...register("driverId")} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">Select available driver</option>
+            <option className="bg-bg-base text-text-primary"  value="">Select available driver</option>
             {eligibleDrivers.map((d) => (
-              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={d.id} value={d.id}>
+              <option className="bg-bg-base text-text-primary"  key={d.id} value={d.id}>
                 {d.name} — {d.licenseCategory}
               </option>
             ))}
@@ -151,7 +151,7 @@ function TripForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             Cargo Weight (kg)
           </label>
           <input
@@ -166,7 +166,7 @@ function TripForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             Planned Distance (km)
           </label>
           <input
@@ -191,7 +191,7 @@ function TripForm({ onSubmit, onCancel, loading }) {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 text-sm rounded-lg border text-[#9CA3AF] hover:bg-[#0F172A]"
+          className="px-4 py-2 text-sm rounded-lg border text-text-secondary hover:bg-bg-card"
         >
           Cancel
         </button>

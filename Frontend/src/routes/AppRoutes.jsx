@@ -11,6 +11,7 @@ import Trips from "../pages/Trips";
 import Maintenance from "../pages/Maintenance";
 import FuelExpense from "../pages/FuelExpense";
 import Reports from "../pages/Reports";
+import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 
 function AppRoutes() {
@@ -35,6 +36,7 @@ function AppRoutes() {
         <Route path="/maintenance" element={<Maintenance />} />
         <Route path="/fuel-expense" element={<FuelExpense />} />
         <Route path="/reports" element={<Reports />} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
 
       {/* Default redirect */}

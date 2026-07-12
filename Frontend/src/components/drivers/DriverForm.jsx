@@ -47,7 +47,7 @@ function DriverForm({ defaultValues, onSubmit, onCancel, loading }) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2">
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Full Name</label>
+          <label className="block text-sm font-medium text-text-primary mb-1">Full Name</label>
           <input
             {...register("name")}
             className="w-full border rounded-lg px-3 py-2 text-sm"
@@ -57,7 +57,7 @@ function DriverForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             License Number
           </label>
           <input
@@ -71,16 +71,16 @@ function DriverForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             License Category
           </label>
           <select
             {...register("licenseCategory")}
             className="w-full border rounded-lg px-3 py-2 text-sm"
           >
-            <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">Select category</option>
+            <option className="bg-bg-base text-text-primary"  value="">Select category</option>
             {LICENSE_CATEGORIES.map((c) => (
-              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={c} value={c}>
+              <option className="bg-bg-base text-text-primary"  key={c} value={c}>
                 {c}
               </option>
             ))}
@@ -91,7 +91,7 @@ function DriverForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             License Expiry Date
           </label>
           <input
@@ -105,7 +105,7 @@ function DriverForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             Contact Number
           </label>
           <input
@@ -119,7 +119,7 @@ function DriverForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             Safety Score (0-100)
           </label>
           <input
@@ -133,10 +133,10 @@ function DriverForm({ defaultValues, onSubmit, onCancel, loading }) {
         </div>
 
         <div className="col-span-2">
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Status</label>
+          <label className="block text-sm font-medium text-text-primary mb-1">Status</label>
           <select {...register("status")} className="w-full border rounded-lg px-3 py-2 text-sm">
             {Object.values(DRIVER_STATUS).map((s) => (
-              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={s} value={s}>
+              <option className="bg-bg-base text-text-primary"  key={s} value={s}>
                 {s}
               </option>
             ))}
@@ -148,7 +148,7 @@ function DriverForm({ defaultValues, onSubmit, onCancel, loading }) {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 text-sm rounded-lg border text-[#9CA3AF] hover:bg-[#0F172A]"
+          className="px-4 py-2 text-sm rounded-lg border text-text-secondary hover:bg-bg-card"
         >
           Cancel
         </button>

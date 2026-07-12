@@ -28,13 +28,13 @@ function FuelLogForm({ onSubmit, onCancel, loading }) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2">
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">
+          <label className="block text-sm font-medium text-text-primary mb-1">
             Vehicle {vehiclesLoading && "(loading...)"}
           </label>
           <select {...register("vehicleId")} className="w-full border rounded-lg px-3 py-2 text-sm">
-            <option className="bg-[#0B0F14] text-[#E5E7EB]"  value="">Select vehicle</option>
+            <option className="bg-bg-base text-text-primary"  value="">Select vehicle</option>
             {vehicles.map((v) => (
-              <option className="bg-[#0B0F14] text-[#E5E7EB]"  key={v.id} value={v.id}>
+              <option className="bg-bg-base text-text-primary"  key={v.id} value={v.id}>
                 {v.regNumber} — {v.name}
               </option>
             ))}
@@ -45,7 +45,7 @@ function FuelLogForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Liters</label>
+          <label className="block text-sm font-medium text-text-primary mb-1">Liters</label>
           <input
             type="number"
             step="0.01"
@@ -57,7 +57,7 @@ function FuelLogForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Cost (₹)</label>
+          <label className="block text-sm font-medium text-text-primary mb-1">Cost (₹)</label>
           <input
             type="number"
             {...register("cost")}
@@ -68,7 +68,7 @@ function FuelLogForm({ onSubmit, onCancel, loading }) {
         </div>
 
         <div className="col-span-2">
-          <label className="block text-sm font-medium text-[#E5E7EB] mb-1">Date</label>
+          <label className="block text-sm font-medium text-text-primary mb-1">Date</label>
           <input
             type="date"
             {...register("date")}
@@ -82,7 +82,7 @@ function FuelLogForm({ onSubmit, onCancel, loading }) {
         <button
           type="button"
           onClick={onCancel}
-          className="px-4 py-2 text-sm rounded-lg border text-[#9CA3AF] hover:bg-[#0F172A]"
+          className="px-4 py-2 text-sm rounded-lg border text-text-secondary hover:bg-bg-card"
         >
           Cancel
         </button>

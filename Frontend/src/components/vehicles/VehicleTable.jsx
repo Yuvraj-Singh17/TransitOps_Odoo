@@ -5,17 +5,17 @@ import StatusBadge from "../common/StatusBadge";
 function VehicleTable({ vehicles = [], onEdit, onDelete }) {
   if (vehicles.length === 0) {
     return (
-      <div className="text-center py-10 text-[#9CA3AF] text-sm">
+      <div className="text-center py-10 text-text-secondary text-sm">
         No vehicles found. Add one to get started.
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto bg-[#121821] rounded-xl border shadow-sm">
+    <div className="overflow-x-auto bg-bg-card rounded-xl border shadow-sm">
       <table className="min-w-full text-sm">
-        <thead className="bg-[#0F172A] border-b border-[#1F2937]">
-          <tr className="text-left text-[#9CA3AF]">
+        <thead className="bg-bg-card border-b border-border-dark">
+          <tr className="text-left text-text-secondary">
             <th className="px-4 py-3 font-medium">Reg. Number</th>
             <th className="px-4 py-3 font-medium">Name / Model</th>
             <th className="px-4 py-3 font-medium">Type</th>
@@ -27,8 +27,8 @@ function VehicleTable({ vehicles = [], onEdit, onDelete }) {
         </thead>
         <tbody>
           {vehicles.map((v) => (
-            <tr key={v.id} className="border-b border-[#1F2937] last:border-0 hover:bg-[#0F172A]">
-              <td className="px-4 py-3 font-medium text-[#E5E7EB]">{v.regNumber}</td>
+            <tr key={v.id} className="border-b border-border-dark last:border-0 hover:bg-bg-card">
+              <td className="px-4 py-3 font-medium text-text-primary">{v.regNumber}</td>
               <td className="px-4 py-3">{v.name}</td>
               <td className="px-4 py-3">{v.type}</td>
               <td className="px-4 py-3">{v.maxLoadCapacity} kg</td>

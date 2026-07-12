@@ -39,7 +39,7 @@ function UtilizationReport({ data }) {
           <Legend />
         </PieChart>
       </ResponsiveContainer>
-      <p className="text-sm text-[#9CA3AF] mt-2">
+      <p className="text-sm text-text-secondary mt-2">
         Fleet Utilization: <span className="font-bold text-blue-600">{utilizationPercent}%</span>
       </p>
     </div>

@@ -18,11 +18,11 @@
   --color-brand-800: #006185;
   --color-brand-900: #00425c;
 
-  --color-bg-base: #0b0f14;
-  --color-bg-card: #121821;
-  --color-text-primary: #e5e7eb;
-  --color-text-secondary: #9ca3af;
-  --color-border-dark: #1f2937;
+  --color-bg-base: var(--theme-bg-base);
+  --color-bg-card: var(--theme-bg-card);
+  --color-text-primary: var(--theme-text-primary);
+  --color-text-secondary: var(--theme-text-secondary);
+  --color-border-dark: var(--theme-border-dark);
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-heading: 'Outfit', system-ui, sans-serif;
@@ -48,41 +48,91 @@
   }
 }
 
+:root {
+  /* Light Theme - Glassmorphism Light */
+  --theme-bg-base: #f8fafc;
+  --theme-bg-card: #ffffff;
+  --theme-text-primary: #0f172a;
+  --theme-text-secondary: #475569;
+  --theme-border-dark: #e2e8f0;
+  --theme-bg-mesh: 
+    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.08), transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.08), transparent 25%),
+    #f8fafc;
+}
+
+.dark {
+  /* Dark Theme - Glassmorphism Dark (Concept C) */
+  --theme-bg-base: #0B0F14;
+  --theme-bg-card: #121821;
+  --theme-text-primary: #e5e7eb;
+  --theme-text-secondary: #9ca3af;
+  --theme-border-dark: #1f2937;
+  --theme-bg-mesh: 
+    radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15), transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(236, 72, 153, 0.15), transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(14, 165, 233, 0.15), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(168, 85, 247, 0.15), transparent 40%),
+    #0B0F14;
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);
   background-color: var(--color-bg-base);
+  background-image: var(--theme-bg-mesh);
   color: var(--color-text-primary);
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: var(--font-heading);
 }
 
-/* Glassmorphism Utilities - Dark M-Style */
+/* Glassmorphism Utilities */
 .glass-panel {
-  background: rgba(18, 24, 33, 0.4); /* High transparency */
+  background: rgba(30, 41, 59, 0.4);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle inner border */
-  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.6); /* Wide dark shadow */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
+}
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.6);
+}
+
+.glass-sidebar {
+  background: var(--color-bg-card);
+}
+.dark .glass-sidebar {
+  background: var(--color-bg-card);
 }
 
 .glass-card {
-  background: rgba(18, 24, 33, 0.5); /* High transparency */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-dark);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+.dark .glass-card {
+  background: var(--color-bg-card);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
 .glass-card:hover {
-  transform: translateY(-3px);
-  background: rgba(18, 24, 33, 0.7);
-  border-color: rgba(0, 194, 255, 0.4);
-  /* Massive glowing neon spread */
-  box-shadow: 0 0 35px rgba(0, 194, 255, 0.25), 0 0 15px rgba(0, 194, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-brand-500);
+}
+.dark .glass-card:hover {
+  box-shadow: 0 0 15px rgba(0, 194, 255, 0.15), 0 0 5px rgba(0, 194, 255, 0.1);
 }
 
 /* Custom Scrollbar for better aesthetics */

@@ -65,10 +65,10 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
         ) : (
           <form
             onSubmit={handleCompleteSubmit}
-            className="flex flex-wrap items-end gap-2 bg-[#0F172A] p-3 rounded-lg border"
+            className="flex flex-wrap items-end gap-2 bg-bg-card p-3 rounded-lg border"
           >
             <div>
-              <label className="text-xs text-[#9CA3AF] block mb-1">Final Odometer</label>
+              <label className="text-xs text-text-secondary block mb-1">Final Odometer</label>
               <input
                 type="number"
                 value={finalOdometer}
@@ -78,7 +78,7 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
               />
             </div>
             <div>
-              <label className="text-xs text-[#9CA3AF] block mb-1">Fuel Consumed (L)</label>
+              <label className="text-xs text-text-secondary block mb-1">Fuel Consumed (L)</label>
               <input
                 type="number"
                 value={fuelConsumed}
@@ -88,7 +88,7 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
               />
             </div>
             <div>
-              <label className="text-xs text-[#9CA3AF] block mb-1">Revenue (₹)</label>
+              <label className="text-xs text-text-secondary block mb-1">Revenue (₹)</label>
               <input
                 type="number"
                 value={revenue}
@@ -105,7 +105,7 @@ function TripLifecycleActions({ trip, onDispatch, onComplete, onCancel, loading 
             <button
               type="button"
               onClick={() => setShowCompleteForm(false)}
-              className="text-[#9CA3AF] text-xs px-2"
+              className="text-text-secondary text-xs px-2"
             >
               Cancel
             </button>

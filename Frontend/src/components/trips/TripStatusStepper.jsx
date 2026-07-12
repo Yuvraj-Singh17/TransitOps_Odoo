@@ -32,7 +32,7 @@ function TripStatusStepper({ currentStatus }) {
                     ? "bg-green-500 text-white"
                     : isActive
                     ? "bg-[#00C2FF] text-black hover:shadow-cyan-500/50 hover:shadow-lg transition-all duration-300"
-                    : "bg-gray-200 text-[#9CA3AF]"
+                    : "bg-gray-200 text-text-secondary"
                 }`}
               >
                 {isCompleted ? <Check size={14} /> : idx + 1}

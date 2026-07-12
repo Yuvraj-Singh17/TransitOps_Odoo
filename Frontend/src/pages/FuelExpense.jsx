@@ -73,7 +73,7 @@ function FuelExpense() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-[#E5E7EB]">Fuel & Expense Management</h2>
+        <h2 className="text-2xl font-bold text-text-primary">Fuel & Expense Management</h2>
         {activeTab !== "summary" && (
           <button
             onClick={() => setModalOpen(true)}
@@ -86,7 +86,7 @@ function FuelExpense() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 bg-[#0B0F14] border border-[#1F2937] p-1.5 rounded-xl w-fit shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
+      <div className="flex gap-1 mb-6 bg-bg-base border border-border-dark p-1.5 rounded-xl w-fit shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -94,7 +94,7 @@ function FuelExpense() {
             className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
               activeTab === tab.id
                 ? "bg-[#00C2FF]/10 text-[#00C2FF] shadow-[0_0_15px_rgba(0,194,255,0.2)]"
-                : "text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-[#121821]/50"
+                : "text-text-secondary hover:text-text-primary hover:bg-bg-card/50"
             }`}
           >
             {tab.label}
@@ -107,10 +107,10 @@ function FuelExpense() {
         fuelLoading ? (
           <Loader />
         ) : (
-          <div className="overflow-x-auto bg-[#121821] rounded-xl border shadow-sm">
+          <div className="overflow-x-auto bg-bg-card rounded-xl border shadow-sm">
             <table className="min-w-full text-sm">
-              <thead className="bg-[#0F172A] border-b border-[#1F2937]">
-                <tr className="text-left text-[#9CA3AF]">
+              <thead className="bg-bg-card border-b border-border-dark">
+                <tr className="text-left text-text-secondary">
                   <th className="px-4 py-3 font-medium">Vehicle</th>
                   <th className="px-4 py-3 font-medium">Liters</th>
                   <th className="px-4 py-3 font-medium">Cost</th>
@@ -119,7 +119,7 @@ function FuelExpense() {
               </thead>
               <tbody>
                 {(fuelLogs || []).map((f) => (
-                  <tr key={f.id} className="border-b border-[#1F2937] last:border-0 hover:bg-[#0F172A]">
+                  <tr key={f.id} className="border-b border-border-dark last:border-0 hover:bg-bg-card">
                     <td className="px-4 py-3 font-medium">{f.vehicleRegNumber || (f.vehicleId ? f.vehicleId : "Deleted Vehicle")}</td>
                     <td className="px-4 py-3 flex items-center gap-1.5">
                       <Fuel size={14} className="text-blue-500" /> {f.liters} L
@@ -146,10 +146,10 @@ function FuelExpense() {
         expensesLoading ? (
           <Loader />
         ) : (
-          <div className="overflow-x-auto bg-[#121821] rounded-xl border shadow-sm">
+          <div className="overflow-x-auto bg-bg-card rounded-xl border shadow-sm">
             <table className="min-w-full text-sm">
-              <thead className="bg-[#0F172A] border-b border-[#1F2937]">
-                <tr className="text-left text-[#9CA3AF]">
+              <thead className="bg-bg-card border-b border-border-dark">
+                <tr className="text-left text-text-secondary">
                   <th className="px-4 py-3 font-medium">Vehicle</th>
                   <th className="px-4 py-3 font-medium">Type</th>
                   <th className="px-4 py-3 font-medium">Amount</th>
@@ -158,7 +158,7 @@ function FuelExpense() {
               </thead>
               <tbody>
                 {(expenses || []).map((e) => (
-                  <tr key={e.id} className="border-b border-[#1F2937] last:border-0 hover:bg-[#0F172A]">
+                  <tr key={e.id} className="border-b border-border-dark last:border-0 hover:bg-bg-card">
                     <td className="px-4 py-3 font-medium">{e.vehicleRegNumber || (e.vehicleId ? e.vehicleId : "Deleted Vehicle")}</td>
                     <td className="px-4 py-3 flex items-center gap-1.5">
                       <Receipt size={14} className="text-purple-500" /> {e.type}
@@ -201,12 +201,12 @@ function FuelExpense() {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#121821] rounded-xl shadow-lg w-full max-w-lg p-6">
+          <div className="bg-bg-card rounded-xl shadow-lg w-full max-w-lg p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-[#E5E7EB]">
+              <h3 className="text-lg font-semibold text-text-primary">
                 {activeTab === "fuel" ? "Add Fuel Log" : "Add Expense"}
               </h3>
-              <button onClick={() => setModalOpen(false)} className="text-gray-400 hover:text-[#9CA3AF]">
+              <button onClick={() => setModalOpen(false)} className="text-gray-400 hover:text-text-secondary">
                 <X size={20} />
               </button>
             </div>

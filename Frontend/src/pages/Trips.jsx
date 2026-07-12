@@ -77,7 +77,7 @@ function Trips() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-[#E5E7EB]">Trip Management</h2>
+        <h2 className="text-2xl font-bold text-text-primary">Trip Management</h2>
         <button
           onClick={() => setModalOpen(true)}
           className="flex items-center gap-2 bg-[#00C2FF] text-black hover:shadow-cyan-500/50 hover:shadow-lg transition-all duration-300 px-4 py-2 rounded-lg text-sm hover:bg-[#00A8E0]"
@@ -103,10 +103,10 @@ function Trips() {
       {/* Create Trip Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#121821] rounded-xl shadow-lg w-full max-w-2xl p-6">
+          <div className="bg-bg-card rounded-xl shadow-lg w-full max-w-2xl p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-[#E5E7EB]">Create Trip</h3>
-              <button onClick={() => setModalOpen(false)} className="text-gray-400 hover:text-[#9CA3AF]">
+              <h3 className="text-lg font-semibold text-text-primary">Create Trip</h3>
+              <button onClick={() => setModalOpen(false)} className="text-gray-400 hover:text-text-secondary">
                 <X size={20} />
               </button>
             </div>
@@ -122,10 +122,10 @@ function Trips() {
       {/* Trip Details Modal */}
       {detailsTrip && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#121821] rounded-xl shadow-lg w-full max-w-lg p-6">
+          <div className="bg-bg-card rounded-xl shadow-lg w-full max-w-lg p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-[#E5E7EB]">Trip Details</h3>
-              <button onClick={() => setDetailsTrip(null)} className="text-gray-400 hover:text-[#9CA3AF]">
+              <h3 className="text-lg font-semibold text-text-primary">Trip Details</h3>
+              <button onClick={() => setDetailsTrip(null)} className="text-gray-400 hover:text-text-secondary">
                 <X size={20} />
               </button>
             </div>

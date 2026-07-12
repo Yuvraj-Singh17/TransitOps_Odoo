@@ -11,10 +11,10 @@ function MaintenanceTable({ records = [], onClose }) {
   }
 
   return (
-    <div className="overflow-x-auto bg-[#121821] rounded-xl border shadow-sm">
+    <div className="overflow-x-auto bg-bg-card rounded-xl border shadow-sm">
       <table className="min-w-full text-sm">
-        <thead className="bg-[#0F172A] border-b border-[#1F2937]">
-          <tr className="text-left text-[#9CA3AF]">
+        <thead className="bg-bg-card border-b border-border-dark">
+          <tr className="text-left text-text-secondary">
             <th className="px-4 py-3 font-medium">Vehicle</th>
             <th className="px-4 py-3 font-medium">Type</th>
             <th className="px-4 py-3 font-medium">Scheduled Date</th>
@@ -25,8 +25,8 @@ function MaintenanceTable({ records = [], onClose }) {
         </thead>
         <tbody>
           {records.map((r) => (
-            <tr key={r.id} className="border-b border-[#1F2937] last:border-0 hover:bg-[#0F172A]">
-              <td className="px-4 py-3 font-medium text-[#E5E7EB]">
+            <tr key={r.id} className="border-b border-border-dark last:border-0 hover:bg-bg-card">
+              <td className="px-4 py-3 font-medium text-text-primary">
                 {r.vehicleRegNumber || r.vehicleId}
               </td>
               <td className="px-4 py-3">{r.type}</td>

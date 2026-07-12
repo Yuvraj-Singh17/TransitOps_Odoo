@@ -14,11 +14,11 @@ function Button({
 }) {
   const variants = {
     primary: "bg-[#00C2FF] text-black hover:shadow-cyan-500/50 hover:shadow-lg transition-all duration-300 hover:bg-[#00A8E0]",
-    secondary: "border border-gray-300 text-[#E5E7EB] hover:bg-[#0F172A]",
+    secondary: "border border-gray-300 text-text-primary hover:bg-bg-card",
     danger: "bg-red-600 text-white hover:bg-red-700",
     outlineDanger: "border border-red-300 text-red-600 hover:bg-red-50",
     success: "bg-green-600 text-white hover:bg-green-700",
-    ghost: "text-[#9CA3AF] hover:bg-gray-100",
+    ghost: "text-text-secondary hover:bg-gray-100",
   };
 
   const sizes = {

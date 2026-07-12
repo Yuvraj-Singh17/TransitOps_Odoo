@@ -7,7 +7,7 @@ function Loader({ size = "md", fullScreen = false }) {
 
   const spinner = (
     <div
-      className={`${sizeMap[size]} border-4 border-[#1F2937] border-t-blue-600 rounded-full animate-spin`}
+      className={`${sizeMap[size]} border-4 border-border-dark border-t-blue-600 rounded-full animate-spin`}
     />
   );
 

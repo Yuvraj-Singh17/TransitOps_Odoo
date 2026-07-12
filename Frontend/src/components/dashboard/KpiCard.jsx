@@ -11,8 +11,8 @@ function KpiCard({ title, value, icon: Icon, trend, color = "blue" }) {
   return (
     <div className="glass-card rounded-xl p-5 flex items-center justify-between group">
       <div>
-        <p className="text-sm text-[#9CA3AF] group-hover:text-[#E5E7EB] transition-colors">{title}</p>
-        <h3 className="text-2xl font-bold text-[#E5E7EB] mt-1">{value}</h3>
+        <p className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">{title}</p>
+        <h3 className="text-2xl font-bold text-text-primary mt-1">{value}</h3>
         {trend && (
           <p className="text-xs text-green-600 mt-1 font-medium">{trend}</p>
         )}

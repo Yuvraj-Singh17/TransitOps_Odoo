@@ -8,16 +8,16 @@ function VehicleDetailsModal({ vehicle, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-      <div className="bg-[#121821] rounded-xl shadow-lg w-full max-w-lg p-6">
+      <div className="bg-bg-card rounded-xl shadow-lg w-full max-w-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-[#E5E7EB]">{vehicle.name}</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-[#9CA3AF]">
+          <h3 className="text-lg font-semibold text-text-primary">{vehicle.name}</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-text-secondary">
             <X size={20} />
           </button>
         </div>
 
         <div className="flex items-center justify-between mb-4">
-          <span className="text-sm text-[#9CA3AF]">{vehicle.regNumber}</span>
+          <span className="text-sm text-text-secondary">{vehicle.regNumber}</span>
           <StatusBadge status={vehicle.status} />
         </div>
 
@@ -55,7 +55,7 @@ function VehicleDetailsModal({ vehicle, onClose }) {
         <div className="mt-5 pt-4 border-t flex justify-end">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm rounded-lg border text-[#9CA3AF] hover:bg-[#0F172A]"
+            className="px-4 py-2 text-sm rounded-lg border text-text-secondary hover:bg-bg-card"
           >
             Close
           </button>

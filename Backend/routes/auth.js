@@ -8,7 +8,7 @@ const router = express.Router();
 // Generate Token helper
 const generateToken = (user) => {
   return jwt.sign(
-    { id: user.id, email: user.email, phone: user.phone, role: user.role },
+    { id: user.id, email: user.email, phone: user.phone, role: user.role, name: user.name },
     process.env.JWT_SECRET || 'transitops_super_secret_jwt_key_12345',
     { expiresIn: '30d' }
   );
@@ -19,24 +19,33 @@ const generateToken = (user) => {
 // @access  Public
 router.post('/register', async (req, res) => {
   try {
-    const { email, phone, password, role } = req.body;
+    const { name, email, phone, password, role } = req.body;
 
-    if (!email && !phone) {
-      return res.status(400).json({ message: 'Email or phone is required' });
+    if (!phone) {
+      return res.status(400).json({ message: 'Phone number is required' });
+    }
+    
+    if (role !== 'Driver' && !email) {
+      return res.status(400).json({ message: 'Email is required for non-driver roles' });
     }
 
+    const sanitizedEmail = (email && email.trim() !== '') ? email.trim() : undefined;
+
     const query = [];
-    if (email) query.push({ email });
+    if (sanitizedEmail) query.push({ email: sanitizedEmail });
     if (phone) query.push({ phone });
 
-    const userExists = await User.findOne({ $or: query });
-    if (userExists) {
-      return res.status(400).json({ message: 'User already exists' });
+    if (query.length > 0) {
+      const userExists = await User.findOne({ $or: query });
+      if (userExists) {
+        return res.status(400).json({ message: 'User already exists with this email or phone' });
+      }
     }
 
     const user = await User.create({
-      email: email || undefined,
-      phone: phone || undefined,
+      name,
+      email: sanitizedEmail,
+      phone,
       password,
       role,
     });
@@ -46,9 +55,11 @@ router.post('/register', async (req, res) => {
         token: generateToken(user),
         user: {
           id: user.id,
+          name: user.name,
           email: user.email,
           phone: user.phone,
           role: user.role,
+          profileImage: user.profileImage,
         },
       });
     } else {
@@ -79,9 +90,11 @@ router.post('/login', async (req, res) => {
         token: generateToken(user),
         user: {
           id: user.id,
+          name: user.name,
           email: user.email,
           phone: user.phone,
           role: user.role,
+          profileImage: user.profileImage,
         },
       });
     } else {
@@ -130,6 +143,39 @@ router.post('/change-password', protect, async (req, res) => {
     } else {
       res.status(400).json({ message: 'Incorrect old password' });
     }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// @desc    Update user profile
+// @route   PUT /api/auth/profile
+// @access  Private
+router.put('/profile', protect, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+    // Only update profileImage if provided in the request
+    if (req.body.profileImage !== undefined) {
+      user.profileImage = req.body.profileImage;
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      token: generateToken(updatedUser), // Refresh token with new data
+      user: {
+        id: updatedUser.id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        phone: updatedUser.phone,
+        role: updatedUser.role,
+        profileImage: updatedUser.profileImage,
+      },
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

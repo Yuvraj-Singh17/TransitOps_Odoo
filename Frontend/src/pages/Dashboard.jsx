@@ -38,7 +38,7 @@ function Dashboard() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-[#E5E7EB] mb-6">Dashboard</h2>
+      <h2 className="text-2xl font-bold text-text-primary mb-6">Dashboard</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <KpiCard
@@ -53,6 +53,21 @@ function Dashboard() {
           icon={CheckCircle}
           color="green"
         />
+        <KpiCard
+          title="Vehicles in Maintenance"
+          value={kpis.vehiclesInMaintenance}
+          icon={Wrench}
+          color="orange"
+        />
+        <KpiCard
+          title="Total Deliveries"
+          value="1,480"
+          icon={Route}
+          color="purple"
+        />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
         <KpiCard
           title="Vehicles in Maintenance"
           value={kpis.vehiclesInMaintenance}

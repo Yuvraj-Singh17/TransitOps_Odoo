@@ -16,7 +16,7 @@ function ExportButtons({ data, filename }) {
   return (
     <button
       onClick={handleExport}
-      className="flex items-center gap-2 border border-gray-300 text-[#E5E7EB] px-3 py-1.5 rounded-lg text-sm hover:bg-[#0F172A]"
+      className="flex items-center gap-2 border border-gray-300 text-text-primary px-3 py-1.5 rounded-lg text-sm hover:bg-bg-card"
     >
       <Download size={15} />
       Export CSV

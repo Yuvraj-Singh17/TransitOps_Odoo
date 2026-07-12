@@ -2,17 +2,28 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    trim: true,
+  },
+  profileImage: {
+    type: String,
+  },
   email: {
     type: String,
     unique: true,
     sparse: true,
+    required: [
+      function() { return this.role !== 'Driver'; },
+      'Email is required for non-driver roles'
+    ],
     lowercase: true,
     trim: true,
   },
   phone: {
     type: String,
+    required: [true, 'Phone number is required'],
     unique: true,
-    sparse: true,
     trim: true,
   },
   password: {

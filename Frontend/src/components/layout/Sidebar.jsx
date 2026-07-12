@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import {
   LayoutDashboard,
   Truck,
@@ -42,24 +42,39 @@ function Sidebar({ isOpen, onClose }) {
       <aside
         className={`${
           isOpen ? "translate-x-0 w-64" : "-translate-x-full w-64 md:translate-x-0 md:w-0"
-        } fixed md:relative h-full bg-[#0F172A] border-r border-[#1F2937] text-white transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0 shadow-2xl z-30`}
+        } fixed md:relative h-full bg-bg-card border-r border-border-dark text-text-primary transition-all duration-300 ease-in-out overflow-hidden flex-shrink-0 shadow-2xl z-30`}
       >
-        <div className="p-5 border-b border-[#1F2937] flex items-center justify-between gap-3">
+        <div className="p-5 border-b border-border-dark flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="bg-[#00C2FF] p-2 rounded-xl shadow-[0_0_15px_rgba(0,194,255,0.4)]">
               <Truck size={24} className="text-black" />
             </div>
-            <h1 className="text-2xl font-bold font-heading tracking-tight whitespace-nowrap text-white">
+            <h1 className="text-2xl font-bold font-heading tracking-tight whitespace-nowrap text-text-primary">
               TransitOps
             </h1>
           </div>
           {/* Mobile Close Button */}
-          <button onClick={onClose} className="md:hidden text-brand-200 hover:text-white p-1">
+          <button onClick={onClose} className="md:hidden text-text-secondary hover:text-brand-500 p-1">
             <X size={20} />
           </button>
         </div>
+        
+        {/* User profile section matching mockup */}
+        <Link to="/profile" className="px-6 py-4 border-b border-border-dark flex items-center gap-3 hover:bg-white/5 transition-colors cursor-pointer group">
+          <div className="h-10 w-10 rounded-full bg-slate-700 overflow-hidden border border-border-dark shadow-sm flex items-center justify-center group-hover:border-[#00C2FF] transition-colors">
+            {user?.profileImage ? (
+              <img src={user?.profileImage} alt="Profile" className="h-full w-full object-cover" />
+            ) : (
+              <Users size={20} className="text-slate-400" />
+            )}
+          </div>
+          <div className="overflow-hidden">
+            <p className="text-sm font-semibold text-text-primary truncate">{user?.email ? user.email.split('@')[0] : "User"}</p>
+            <p className="text-xs text-text-secondary truncate">{user?.role}</p>
+          </div>
+        </Link>
 
-        <nav className="mt-6 flex flex-col gap-1.5 px-3">
+        <nav className="mt-4 flex flex-col gap-1 px-3">
           {visibleItems.map(({ label, path, icon: Icon }) => (
             <NavLink
               key={path}
@@ -71,12 +86,16 @@ function Sidebar({ isOpen, onClose }) {
                 `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                   isActive
                     ? "bg-[#00C2FF]/10 text-[#00C2FF] border-l-2 border-[#00C2FF] shadow-[inset_4px_0_0_0_#00C2FF,0_0_15px_rgba(0,194,255,0.1)]"
-                    : "text-[#9CA3AF] hover:bg-[#121821] hover:text-[#E5E7EB]"
+                    : "text-text-secondary hover:bg-white/5 hover:text-text-primary"
                 }`
               }
             >
-              <Icon size={18} className="opacity-90" />
-              {label}
+              {({ isActive }) => (
+                <>
+                  <Icon size={18} className={isActive ? "text-[#00C2FF]" : "opacity-80"} />
+                  {label}
+                </>
+              )}
             </NavLink>
           ))}
         </nav>

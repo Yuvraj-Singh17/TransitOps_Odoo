@@ -13,10 +13,10 @@ function TripTable({ trips = [], onDispatch, onComplete, onCancel, onViewDetails
   }
 
   return (
-    <div className="overflow-x-auto bg-[#121821] rounded-xl border shadow-sm">
+    <div className="overflow-x-auto bg-bg-card rounded-xl border shadow-sm">
       <table className="min-w-full text-sm">
-        <thead className="bg-[#0F172A] border-b border-[#1F2937]">
-          <tr className="text-left text-[#9CA3AF]">
+        <thead className="bg-bg-card border-b border-border-dark">
+          <tr className="text-left text-text-secondary">
             <th className="px-4 py-3 font-medium">Route</th>
             <th className="px-4 py-3 font-medium">Vehicle</th>
             <th className="px-4 py-3 font-medium">Driver</th>
@@ -29,9 +29,9 @@ function TripTable({ trips = [], onDispatch, onComplete, onCancel, onViewDetails
         </thead>
         <tbody>
           {trips.map((t) => (
-            <tr key={t.id} className="border-b border-[#1F2937] last:border-0 hover:bg-[#0F172A]">
+            <tr key={t.id} className="border-b border-border-dark last:border-0 hover:bg-bg-card">
               <td className="px-4 py-3">
-                <div className="font-medium text-[#E5E7EB]">{t.source}</div>
+                <div className="font-medium text-text-primary">{t.source}</div>
                 <div className="text-xs text-gray-400">→ {t.destination}</div>
               </td>
               <td className="px-4 py-3">{t.vehicleRegNumber || t.vehicleId}</td>

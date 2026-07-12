@@ -22,6 +22,12 @@ export const useAuthStore = create(
           isAuthenticated: false,
         }),
 
+      updateUser: (userData, token) =>
+        set((state) => ({
+          user: { ...state.user, ...userData },
+          token: token || state.token,
+        })),
+
       hasRole: (allowedRoles = []) => {
         const state = useAuthStore.getState();
         if (!state.user) return false;

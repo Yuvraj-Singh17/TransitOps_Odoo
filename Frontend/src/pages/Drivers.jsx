@@ -83,7 +83,7 @@ function Drivers() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-[#E5E7EB]">Driver Management</h2>
+        <h2 className="text-2xl font-bold text-text-primary">Driver Management</h2>
         <button
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#00C2FF] text-black hover:shadow-cyan-500/50 hover:shadow-lg transition-all duration-300 px-4 py-2 rounded-lg text-sm hover:bg-[#00A8E0]"
@@ -101,12 +101,12 @@ function Drivers() {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-[#121821] rounded-xl shadow-lg w-full max-w-lg p-6">
+          <div className="bg-bg-card rounded-xl shadow-lg w-full max-w-lg p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-[#E5E7EB]">
+              <h3 className="text-lg font-semibold text-text-primary">
                 {editingDriver ? "Edit Driver" : "Add Driver"}
               </h3>
-              <button onClick={closeModal} className="text-gray-400 hover:text-[#9CA3AF]">
+              <button onClick={closeModal} className="text-gray-400 hover:text-text-secondary">
                 <X size={20} />
               </button>
             </div>
